@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_30_224327) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_181934) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -21,6 +21,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_224327) do
     t.string "location"
     t.integer "user_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "articles_categories", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "category_id", null: false
+    t.index ["article_id", "category_id"], name: "index_articles_categories_on_article_id_and_category_id"
+    t.index ["category_id", "article_id"], name: "index_articles_categories_on_category_id_and_article_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
