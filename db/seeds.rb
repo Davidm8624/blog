@@ -21,7 +21,25 @@ Category.create [
   {name: 'Motorsports'},
   {name: 'World-news'},
   {name: 'other'}
-    ]
+]
+
+user.articles.create([
+  {
+    title: 'Advanced Active Record',
+    body: 'models need to relate to eachother. In the real world,...',
+    published_at: Date.today
+  },
+  {
+    title: 'one to many associations',
+    body: 'one to many assciations describe a pattern...',
+    published_at: Date.today
+  },
+  {
+    title: 'Associations',
+    body: 'how stuff is related to eachother',
+    published_at: Date.today
+  }
+])
 
 #$ rails db:seed        is what polulates the db
 #if i need to add more seeds in the future use $ rails db:setup to clean it up then re-make so you dont get duplicates
